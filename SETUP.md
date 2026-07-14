@@ -124,7 +124,7 @@ Run these from the repository root.
 ```powershell
 $tools = @("jobbank-search", "jobdanmark-search", "jobindex-search", "jobnet-search", "linkedin-search", "freehire-search")
 foreach ($tool in $tools) {
-  Set-Location ".agents/skills/$tool/cli"
+  Set-Location ".agent/skills/$tool/cli"
   bun install
   Set-Location "..\..\..\.."
 }
@@ -133,7 +133,7 @@ foreach ($tool in $tools) {
 - Bash / zsh / Git Bash:
 ```bash
 for tool in jobbank-search jobdanmark-search jobindex-search jobnet-search linkedin-search freehire-search; do
-  cd .agents/skills/$tool/cli && bun install && cd ../../../..
+  cd .agent/skills/$tool/cli && bun install && cd ../../../..
 done
 ```
 
@@ -256,9 +256,9 @@ Make sure Bun is installed and you ran `bun install` in each CLI directory. The 
 ### Fonts not found in cover letter
 The cover letter template expects fonts in `cover_letters/OpenFonts/fonts/`. Make sure this directory exists and contains the Lato and Raleway font files.
 
-### Stale `.claude/settings.local.json` from an older clone
-Shared Claude Code permissions now live in `.claude/settings.json` (scoped to `bun run`, `python salary_lookup.py`, and `python3 salary_lookup.py`). Earlier versions of this repo committed a broader `.claude/settings.local.json` that pre-approved `Bash(curl:*)`, `Bash(python:*)` and `Bash(bun:*)`. If you cloned before that change, git leaves the old file behind in your working copy, and its permissions still apply on top of `settings.json`. Delete it (or trim it to your own personal overrides):
+### Stale `.agent/settings.local.json` from an older clone
+Shared Claude Code permissions now live in `.agent/settings.json` (scoped to `bun run`, `python salary_lookup.py`, and `python3 salary_lookup.py`). Earlier versions of this repo committed a broader `.agent/settings.local.json` that pre-approved `Bash(curl:*)`, `Bash(python:*)` and `Bash(bun:*)`. If you cloned before that change, git leaves the old file behind in your working copy, and its permissions still apply on top of `settings.json`. Delete it (or trim it to your own personal overrides):
 
 ```bash
-rm .claude/settings.local.json
+rm .agent/settings.local.json
 ```
